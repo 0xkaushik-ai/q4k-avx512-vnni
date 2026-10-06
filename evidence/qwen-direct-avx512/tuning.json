@@ -1,0 +1,22 @@
+{
+  "all": [
+    {
+      "threads": 8,
+      "flash": "on",
+      "total_ms": 1204.909511,
+      "decode_ms": 929.636113
+    },
+    {
+      "threads": 8,
+      "flash": "off",
+      "total_ms": 1304.865232,
+      "decode_ms": 981.752326
+    }
+  ],
+  "chosen": {
+    "threads": 8,
+    "flash": "on",
+    "total_ms": 1204.909511,
+    "decode_ms": 929.636113
+  }
+}

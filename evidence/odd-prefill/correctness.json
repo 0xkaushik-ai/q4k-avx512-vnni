@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "bitwise_equal": true,
+  "values": 2582912,
+  "max_absolute_error": 0.0,
+  "rms_error": 0.0,
+  "outside_tolerance": 0,
+  "greedy_mismatches": 0,
+  "atol": 1e-05,
+  "rtol": 1e-05,
+  "binary_sha256": "84744cae81d484dd8f903218dc3a8cd3c1e8af9e087377dae5b66ef6a18bc4a0",
+  "patch_sha256": "11c708621a73e98a1eafa5962b1428795ce3adfb7de6c97c887e3e3d03fe4c86"
+}

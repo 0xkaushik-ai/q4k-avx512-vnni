@@ -1,0 +1,128 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1,2,3,4,5,6,7",
+    "/home/shiiit/experiment/build/engine/bin/engine-bench",
+    "--model",
+    "/home/shiiit/experiment/.cache/qwen3-0.6b-q4_k_m.gguf",
+    "--threads",
+    "8",
+    "--prompt-tokens",
+    "1024",
+    "--decode-tokens",
+    "64",
+    "--sequence-seed",
+    "123",
+    "--repeats",
+    "3",
+    "--warmups",
+    "1",
+    "--flash-attention",
+    "on"
+  ],
+  "variant": "candidate",
+  "before": {
+    "loadavg": "9.98 7.65 4.72 5/2305 352",
+    "meminfo": "MemTotal:       16071592 kB\nMemFree:         3080472 kB\nMemAvailable:    8050248 kB\nBuffers:          229680 kB\nCached:          4479808 kB\nSwapCached:      2414224 kB\nActive:          6187952 kB\nInactive:        4615392 kB\nActive(anon):    4816132 kB\nInactive(anon):  1703876 kB\nActive(file):    1371820 kB\nInactive(file):  2911516 kB\nUnevictable:      213288 kB\nMlocked:             176 kB\nSwapTotal:      15958012 kB\nSwapFree:        8522224 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:              2152 kB\nWriteback:             0 kB\nAnonPages:       6146144 kB\nMapped:           555712 kB\nShmem:            426476 kB\nKReclaimable:    1028284 kB\nSlab:            1349884 kB\nSReclaimable:    1028284 kB\nSUnreclaim:       321600 kB\nKernelStack:       37092 kB\nPageTables:       135852 kB\nSecPageTables:      4436 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    23993808 kB\nCommitted_AS:   65025712 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:      193372 kB\nVmallocChunk:          0 kB\nPercpu:            14336 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:    317440 kB\nShmemHugePages:    88064 kB\nShmemPmdMapped:        0 kB\nFileHugePages:     65536 kB\nFilePmdMapped:         0 kB\nUnaccepted:            0 kB\nBalloon:               0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:    13547404 kB\nDirectMap2M:     2924544 kB\nDirectMap1G:           0 kB",
+    "vmstat": {
+      "pswpin": 10589028,
+      "pswpout": 12651411,
+      "pgmajfault": 6243587
+    },
+    "temperatures": {
+      "/sys/class/thermal/thermal_zone2/temp": {
+        "type": "TCPU",
+        "millidegrees_c": "92000"
+      },
+      "/sys/class/thermal/thermal_zone0/temp": {
+        "type": "acpitz",
+        "millidegrees_c": "96000"
+      },
+      "/sys/class/thermal/thermal_zone3/temp": {
+        "type": "iwlwifi_1",
+        "millidegrees_c": "44000"
+      },
+      "/sys/class/thermal/thermal_zone1/temp": {
+        "type": "INT3400 Thermal",
+        "millidegrees_c": "20000"
+      },
+      "/sys/class/thermal/thermal_zone4/temp": {
+        "type": "x86_pkg_temp",
+        "millidegrees_c": "92000"
+      }
+    },
+    "governor": "powersave",
+    "frequency_khz": "2484673",
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "after": {
+    "loadavg": "10.21 7.85 4.85 2/2320 360",
+    "meminfo": "MemTotal:       16071592 kB\nMemFree:         2983120 kB\nMemAvailable:    7954404 kB\nBuffers:          229892 kB\nCached:          4485424 kB\nSwapCached:      2432988 kB\nActive:          6261052 kB\nInactive:        4618296 kB\nActive(anon):    4889228 kB\nInactive(anon):  1705272 kB\nActive(file):    1371824 kB\nInactive(file):  2913024 kB\nUnevictable:      212760 kB\nMlocked:             176 kB\nSwapTotal:      15958012 kB\nSwapFree:        8526616 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:              4320 kB\nWriteback:             0 kB\nAnonPages:       6215652 kB\nMapped:           555680 kB\nShmem:            430744 kB\nKReclaimable:    1028280 kB\nSlab:            1349884 kB\nSReclaimable:    1028280 kB\nSUnreclaim:       321604 kB\nKernelStack:       37312 kB\nPageTables:       136960 kB\nSecPageTables:      4436 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    23993808 kB\nCommitted_AS:   65763072 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:      193604 kB\nVmallocChunk:          0 kB\nPercpu:            14336 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:    317440 kB\nShmemHugePages:    88064 kB\nShmemPmdMapped:        0 kB\nFileHugePages:     65536 kB\nFilePmdMapped:         0 kB\nUnaccepted:            0 kB\nBalloon:               0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:    13547404 kB\nDirectMap2M:     2924544 kB\nDirectMap1G:           0 kB",
+    "vmstat": {
+      "pswpin": 10594538,
+      "pswpout": 12651411,
+      "pgmajfault": 6246628
+    },
+    "temperatures": {
+      "/sys/class/thermal/thermal_zone2/temp": {
+        "type": "TCPU",
+        "millidegrees_c": "94000"
+      },
+      "/sys/class/thermal/thermal_zone0/temp": {
+        "type": "acpitz",
+        "millidegrees_c": "96000"
+      },
+      "/sys/class/thermal/thermal_zone3/temp": {
+        "type": "iwlwifi_1",
+        "millidegrees_c": "44000"
+      },
+      "/sys/class/thermal/thermal_zone1/temp": {
+        "type": "INT3400 Thermal",
+        "millidegrees_c": "20000"
+      },
+      "/sys/class/thermal/thermal_zone4/temp": {
+        "type": "x86_pkg_temp",
+        "millidegrees_c": "94000"
+      }
+    },
+    "governor": "powersave",
+    "frequency_khz": "2306089",
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "returncode": 0
+}

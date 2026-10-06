@@ -1,0 +1,113 @@
+{
+  "created_at": "20261003T222257.482982Z",
+  "binary_sha256": "84744cae81d484dd8f903218dc3a8cd3c1e8af9e087377dae5b66ef6a18bc4a0",
+  "model_sha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a",
+  "model": "/home/shiiit/experiment/.cache/qwen3-0.6b-q4_k_m.gguf",
+  "source_lock": {
+    "repository": "https://github.com/ggml-org/llama.cpp",
+    "revision": "836d57176dc699a726c55418e4f96b8ca628e1bf",
+    "archive_url": "https://github.com/ggml-org/llama.cpp/archive/836d57176dc699a726c55418e4f96b8ca628e1bf.tar.gz",
+    "archive_sha256": "af433e4cfa960c3f257c9cba972a95e69108306368301e35da7be3df5383fb05",
+    "source_directory": ".cache/llama.cpp-836d57176dc699a726c55418e4f96b8ca628e1bf",
+    "patch": "engine/patches/q4k-vnni.patch"
+  },
+  "patch_sha256": "11c708621a73e98a1eafa5962b1428795ce3adfb7de6c97c887e3e3d03fe4c86",
+  "physical_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "scope": "one shared host; exploratory synthetic workloads",
+  "runner_sha256": "f56e279551d2666250bbe2a167909ba9a67a79b4cff7a9cad2670c00ec7e7821",
+  "harness_sha256": "1dcef2420a1b40e4545f1ce93075db1d72b7d91e24022a8f5f7fe5a58e04ce05",
+  "cmake_sha256": "d9afae33f9b6cb3d34f1ef11f94ee18c122c85e19f3f77a3b3a5407920031b2b",
+  "experiment_plan": {
+    "question": "Does the opt-in Q4_K VNNI GEMV kernel improve resident CPU inference on this host without numerical changes?",
+    "primary_model": {
+      "name": "Qwen3-0.6B-Q4_K_M",
+      "source": "unsloth/Qwen3-0.6B-GGUF",
+      "revision": "50968a4468ef4233ed78cd7c3de230dd1d61a56b",
+      "url": "https://huggingface.co/unsloth/Qwen3-0.6B-GGUF/resolve/50968a4468ef4233ed78cd7c3de230dd1d61a56b/Qwen3-0.6B-Q4_K_M.gguf",
+      "sha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a",
+      "selection_reason": "Hidden width 1024 permits Q4_K weights throughout more projections; chosen before whole-model candidate measurements. SmolLM2 hidden width 576 causes most projections to use other quantizations; separate diagnostic attributed only about 6 percent of its decode operator time to Q4_K and is perturbed by profiling."
+    },
+    "regression_model": "SmolLM2-135M-Instruct-Q4_K_M, hash in native/sdk-lock.json",
+    "primary_workload": {
+      "prompt_tokens": 128,
+      "decode_tokens": 64,
+      "sequence_seed": 42
+    },
+    "additional_workloads": [
+      {
+        "prompt_tokens": 512,
+        "decode_tokens": 64,
+        "sequence_seed": 73
+      },
+      {
+        "prompt_tokens": 1024,
+        "decode_tokens": 64,
+        "sequence_seed": 123
+      }
+    ],
+    "tuning": "Select baseline threads from 1/2/4/8 physical cores and flash attention on/off by lowest primary resident-total median; same configuration for candidate and all workloads.",
+    "correctness": "Kernel fixtures bitwise equality; full vocabulary at 17 positions per workload at atol=rtol=1e-5 with identical greedy choices.",
+    "paired_blocks_primary_model": 8,
+    "repeats_per_process": 3,
+    "warmups_per_process": 1,
+    "exploratory_acceptance": "Primary median baseline/candidate resident-total ratio >=1.20, paired bootstrap95 lower bound >1, no additional-workload total slowdown >5 percent. Correctness required. Not sufficient for a general product claim.",
+    "limitations": "Same binary includes original arithmetic and candidate; no pristine-upstream binary comparison. Synthetic fixed tokens; no sampling. Single shared laptop; dynamic frequencies and background load."
+  },
+  "inherited_performance_environment": {
+    "GGML_CPU_DISABLE_FUSION": null,
+    "OMP_NUM_THREADS": null,
+    "OMP_PROC_BIND": null,
+    "OMP_PLACES": null,
+    "OMP_WAIT_POLICY": null
+  },
+  "host": [
+    "Linux",
+    "kali",
+    "6.19.14+kali-amd64",
+    "#1 SMP PREEMPT_DYNAMIC Kali 6.19.14-1+kali1 (2026-05-05)",
+    "x86_64"
+  ],
+  "cpu": {
+    "processor": "0",
+    "vendor_id": "GenuineIntel",
+    "cpu family": "6",
+    "model": "141",
+    "model name": "11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz",
+    "stepping": "1",
+    "microcode": "0x58",
+    "cpu MHz": "2669.137",
+    "cache size": "24576 KB",
+    "physical id": "0",
+    "siblings": "16",
+    "core id": "0",
+    "cpu cores": "8",
+    "apicid": "0",
+    "initial apicid": "0",
+    "fpu": "yes",
+    "fpu_exception": "yes",
+    "cpuid level": "27",
+    "wp": "yes",
+    "flags": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l2 cdp_l2 ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid movdiri movdir64b fsrm avx512_vp2intersect md_clear ibt flush_l1d arch_capabilities",
+    "vmx flags": "vnmi preemption_timer posted_intr invvpid ept_x_only ept_ad ept_1gb flexpriority apicv tsc_offset vtpr mtf vapic ept vpid unrestricted_guest vapic_reg vid ple pml ept_violation_ve ept_mode_based_exec tsc_scaling",
+    "bugs": "spectre_v1 spectre_v2 spec_store_bypass swapgs eibrs_pbrsb gds bhi spectre_v2_user its its_native_only",
+    "bogomips": "4608.00",
+    "clflush size": "64",
+    "cache_alignment": "64",
+    "address sizes": "39 bits physical, 48 bits virtual",
+    "power management": ""
+  },
+  "python": "3.13.12 (main, Feb  4 2026, 15:06:39) [GCC 15.2.0]",
+  "build_files": {
+    "build/engine/CMakeCache.txt": "541545a1212f77226b99ba48be9c9d2ebd73a69f1fd739c1a101dd276667b7c9",
+    "build/engine/compile_commands.json": "a089113def16c0218e43346b8847ec2fddaffe9bc7bd94c9aafb4ee089b2a21d"
+  }
+}

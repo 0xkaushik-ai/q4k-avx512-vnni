@@ -1,0 +1,10 @@
+{
+  "recorded_at_utc": "2026-10-03T22:19:57.724393+00:00",
+  "sha256": {
+    "engine/patches/q4k-vnni.patch": "22b424770348616029c7a96811f4e6d04b942cf9988de959ec26b02455e3c779",
+    "engine/kernel_test.cpp": "833dc69ab4e6f951178052b6df916f8705c61690139493647f0165598c97e126",
+    "build/engine/bin/engine-kernel-test": "d3cfe55430bd2d8038af60d5092c4f733ca9d7224aa9b322df5421ab691c05a4",
+    "build/engine/bin/engine-bench": "1e39df9b1b55613e32fca2248fec028c5a0efdc4ea3c02f3f34e2d5e0a3699a9",
+    ".cache/llama.cpp-836d57176dc699a726c55418e4f96b8ca628e1bf/ggml/src/ggml-cpu/arch/x86/repack.cpp": "82458940483a47b25adf481c65a44e6a7ec5b38af5fc0eca1eb4405b587f20dc"
+  }
+}

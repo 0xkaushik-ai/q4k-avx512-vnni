@@ -1,0 +1,16 @@
+{
+  "scope": "Greedy text smoke check using upstream simple example, not a speed benchmark",
+  "cases": [
+    {
+      "prompt": "The capital of France is",
+      "identical_text": true,
+      "output": "The capital of France is Paris. The capital of France is also the capital of the Republic of France. The capital of France is also the capital\n"
+    },
+    {
+      "prompt": "A computer program is",
+      "identical_text": true,
+      "output": "A computer program is written to calculate the number of ways to choose 2000 elements from a set of 2000\n"
+    }
+  ],
+  "demo_binary_sha256": "2ee2c9116fb2a4160426027467b04f2963cfea023b1387e701f209709e4f8613"
+}

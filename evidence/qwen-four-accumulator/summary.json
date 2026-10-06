@@ -1,0 +1,346 @@
+{
+  "metadata": {
+    "created_at": "20261003T220658.732634Z",
+    "binary_sha256": "1e39df9b1b55613e32fca2248fec028c5a0efdc4ea3c02f3f34e2d5e0a3699a9",
+    "model_sha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a",
+    "model": "/home/shiiit/experiment/.cache/qwen3-0.6b-q4_k_m.gguf",
+    "source_lock": {
+      "repository": "https://github.com/ggml-org/llama.cpp",
+      "revision": "836d57176dc699a726c55418e4f96b8ca628e1bf",
+      "archive_url": "https://github.com/ggml-org/llama.cpp/archive/836d57176dc699a726c55418e4f96b8ca628e1bf.tar.gz",
+      "archive_sha256": "af433e4cfa960c3f257c9cba972a95e69108306368301e35da7be3df5383fb05",
+      "source_directory": ".cache/llama.cpp-836d57176dc699a726c55418e4f96b8ca628e1bf",
+      "patch": "engine/patches/q4k-vnni.patch"
+    },
+    "patch_sha256": "22b424770348616029c7a96811f4e6d04b942cf9988de959ec26b02455e3c779",
+    "physical_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "scope": "one shared host; exploratory synthetic workloads",
+    "runner_sha256": "05b651982a236afab9eac4b7b06f41d677816e61f25638b89256fe17de521ab8",
+    "experiment_plan": {
+      "question": "Does the opt-in Q4_K VNNI GEMV kernel improve resident CPU inference on this host without numerical changes?",
+      "primary_model": {
+        "name": "Qwen3-0.6B-Q4_K_M",
+        "source": "unsloth/Qwen3-0.6B-GGUF",
+        "revision": "50968a4468ef4233ed78cd7c3de230dd1d61a56b",
+        "url": "https://huggingface.co/unsloth/Qwen3-0.6B-GGUF/resolve/50968a4468ef4233ed78cd7c3de230dd1d61a56b/Qwen3-0.6B-Q4_K_M.gguf",
+        "sha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a",
+        "selection_reason": "Hidden width 1024 permits Q4_K weights throughout more projections; chosen before whole-model candidate measurements. SmolLM2 hidden width 576 causes most projections to use other quantizations; separate diagnostic attributed only about 6 percent of its decode operator time to Q4_K and is perturbed by profiling."
+      },
+      "regression_model": "SmolLM2-135M-Instruct-Q4_K_M, hash in native/sdk-lock.json",
+      "primary_workload": {
+        "prompt_tokens": 128,
+        "decode_tokens": 64,
+        "sequence_seed": 42
+      },
+      "additional_workloads": [
+        {
+          "prompt_tokens": 512,
+          "decode_tokens": 64,
+          "sequence_seed": 73
+        },
+        {
+          "prompt_tokens": 1024,
+          "decode_tokens": 64,
+          "sequence_seed": 123
+        }
+      ],
+      "tuning": "Select baseline threads from 1/2/4/8 physical cores and flash attention on/off by lowest primary resident-total median; same configuration for candidate and all workloads.",
+      "correctness": "Kernel fixtures bitwise equality; full vocabulary at 17 positions per workload at atol=rtol=1e-5 with identical greedy choices.",
+      "paired_blocks_primary_model": 8,
+      "repeats_per_process": 3,
+      "warmups_per_process": 1,
+      "exploratory_acceptance": "Primary median baseline/candidate resident-total ratio >=1.20, paired bootstrap95 lower bound >1, no additional-workload total slowdown >5 percent. Correctness required. Not sufficient for a general product claim.",
+      "limitations": "Same binary includes original arithmetic and candidate; no pristine-upstream binary comparison. Synthetic fixed tokens; no sampling. Single shared laptop; dynamic frequencies and background load."
+    },
+    "inherited_performance_environment": {
+      "GGML_CPU_DISABLE_FUSION": null,
+      "OMP_NUM_THREADS": null,
+      "OMP_PROC_BIND": null,
+      "OMP_PLACES": null,
+      "OMP_WAIT_POLICY": null
+    },
+    "host": [
+      "Linux",
+      "kali",
+      "6.19.14+kali-amd64",
+      "#1 SMP PREEMPT_DYNAMIC Kali 6.19.14-1+kali1 (2026-05-05)",
+      "x86_64"
+    ],
+    "cpu": {
+      "processor": "0",
+      "vendor_id": "GenuineIntel",
+      "cpu family": "6",
+      "model": "141",
+      "model name": "11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz",
+      "stepping": "1",
+      "microcode": "0x58",
+      "cpu MHz": "3700.337",
+      "cache size": "24576 KB",
+      "physical id": "0",
+      "siblings": "16",
+      "core id": "0",
+      "cpu cores": "8",
+      "apicid": "0",
+      "initial apicid": "0",
+      "fpu": "yes",
+      "fpu_exception": "yes",
+      "cpuid level": "27",
+      "wp": "yes",
+      "flags": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l2 cdp_l2 ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid movdiri movdir64b fsrm avx512_vp2intersect md_clear ibt flush_l1d arch_capabilities",
+      "vmx flags": "vnmi preemption_timer posted_intr invvpid ept_x_only ept_ad ept_1gb flexpriority apicv tsc_offset vtpr mtf vapic ept vpid unrestricted_guest vapic_reg vid ple pml ept_violation_ve ept_mode_based_exec tsc_scaling",
+      "bugs": "spectre_v1 spectre_v2 spec_store_bypass swapgs eibrs_pbrsb gds bhi spectre_v2_user its its_native_only",
+      "bogomips": "4608.00",
+      "clflush size": "64",
+      "cache_alignment": "64",
+      "address sizes": "39 bits physical, 48 bits virtual",
+      "power management": ""
+    },
+    "python": "3.13.12 (main, Feb  4 2026, 15:06:39) [GCC 15.2.0]",
+    "build_files": {
+      "build/engine/CMakeCache.txt": "541545a1212f77226b99ba48be9c9d2ebd73a69f1fd739c1a101dd276667b7c9",
+      "build/engine/compile_commands.json": "a089113def16c0218e43346b8847ec2fddaffe9bc7bd94c9aafb4ee089b2a21d"
+    }
+  },
+  "tuning": {
+    "threads": 8,
+    "flash": "on",
+    "total_ms": 1202.5196,
+    "decode_ms": 907.882077
+  },
+  "correctness": [
+    {
+      "prompt_tokens": 128,
+      "seed": 42,
+      "passed": true,
+      "bitwise_equal": true,
+      "values": 2582912,
+      "max_absolute_error": 0.0,
+      "rms_error": 0.0,
+      "outside_tolerance": 0,
+      "greedy_mismatches": 0,
+      "atol": 1e-05,
+      "rtol": 1e-05
+    },
+    {
+      "prompt_tokens": 512,
+      "seed": 73,
+      "passed": true,
+      "bitwise_equal": true,
+      "values": 2582912,
+      "max_absolute_error": 0.0,
+      "rms_error": 0.0,
+      "outside_tolerance": 0,
+      "greedy_mismatches": 0,
+      "atol": 1e-05,
+      "rtol": 1e-05
+    },
+    {
+      "prompt_tokens": 1024,
+      "seed": 123,
+      "passed": true,
+      "bitwise_equal": true,
+      "values": 2582912,
+      "max_absolute_error": 0.0,
+      "rms_error": 0.0,
+      "outside_tolerance": 0,
+      "greedy_mismatches": 0,
+      "atol": 1e-05,
+      "rtol": 1e-05
+    }
+  ],
+  "workloads": [
+    {
+      "prompt_tokens": 128,
+      "decode_tokens": 64,
+      "sequence_seed": 42,
+      "prefill_ms": {
+        "median_speedup": 1.010659964141733,
+        "bootstrap_95_interval": [
+          0.9478879290003268,
+          1.0258850855094084
+        ],
+        "paired_speedups": [
+          0.9848188332779758,
+          0.9140013014528243,
+          1.0103326729915572,
+          0.9478879290003268,
+          1.0258850855094084,
+          1.0520992621589411,
+          1.0212284755783758,
+          1.0109872552919092
+        ],
+        "blocks": 8
+      },
+      "decode_ms": {
+        "median_speedup": 0.9703668541866091,
+        "bootstrap_95_interval": [
+          0.8957519614261777,
+          1.0693784552797299
+        ],
+        "paired_speedups": [
+          0.9821942685584557,
+          0.8839385595563244,
+          0.8957519614261777,
+          0.9467267374658932,
+          0.9585394398147625,
+          1.0885221667505454,
+          1.0021372554745627,
+          1.0693784552797299
+        ],
+        "blocks": 8
+      },
+      "total_ms": {
+        "median_speedup": 0.9700232069494834,
+        "bootstrap_95_interval": [
+          0.9350816075590888,
+          1.0602533698621357
+        ],
+        "paired_speedups": [
+          0.9871988685747256,
+          0.8910744921777114,
+          0.9350816075590888,
+          0.9528475453242412,
+          0.93776550111594,
+          1.0733206470976626,
+          1.0003442596088044,
+          1.0602533698621357
+        ],
+        "blocks": 8
+      }
+    },
+    {
+      "prompt_tokens": 512,
+      "decode_tokens": 64,
+      "sequence_seed": 73,
+      "prefill_ms": {
+        "median_speedup": 0.9957460000584721,
+        "bootstrap_95_interval": [
+          0.9646240030457167,
+          1.0540984162607703
+        ],
+        "paired_speedups": [
+          1.0024530525193533,
+          0.9431761220349851,
+          0.9662357290079296,
+          1.0968385910169458,
+          0.989038947597591,
+          1.0088671865712024,
+          1.0540984162607703,
+          0.9646240030457167
+        ],
+        "blocks": 8
+      },
+      "decode_ms": {
+        "median_speedup": 0.997910416454002,
+        "bootstrap_95_interval": [
+          0.8927665101707187,
+          1.0226367624054882
+        ],
+        "paired_speedups": [
+          1.0089880335466326,
+          0.812328994568109,
+          0.9868327993613715,
+          1.027563431176418,
+          0.9375768222828607,
+          0.8927665101707187,
+          1.0224619106779016,
+          1.0226367624054882
+        ],
+        "blocks": 8
+      },
+      "total_ms": {
+        "median_speedup": 0.9907921375029058,
+        "bootstrap_95_interval": [
+          0.947280349098644,
+          1.0131828611430291
+        ],
+        "paired_speedups": [
+          1.0018950462735303,
+          0.8743394350035455,
+          0.9901036516596485,
+          1.0131828611430291,
+          0.9631164638571748,
+          0.947280349098644,
+          1.0411033167123818,
+          0.9914806233461633
+        ],
+        "blocks": 8
+      }
+    },
+    {
+      "prompt_tokens": 1024,
+      "decode_tokens": 64,
+      "sequence_seed": 123,
+      "prefill_ms": {
+        "median_speedup": 0.9761799022341721,
+        "bootstrap_95_interval": [
+          0.9071249700328512,
+          1.010124157403547
+        ],
+        "paired_speedups": [
+          0.9844081362280612,
+          1.010124157403547,
+          0.932015140239154,
+          0.9679516682402829,
+          0.9071249700328512,
+          1.1305805454484945,
+          0.8270739798485608,
+          0.9949977578921885
+        ],
+        "blocks": 8
+      },
+      "decode_ms": {
+        "median_speedup": 0.9444841570013638,
+        "bootstrap_95_interval": [
+          0.7898253056626787,
+          1.0561417779669136
+        ],
+        "paired_speedups": [
+          0.962965509100669,
+          1.0561417779669136,
+          0.9260028049020586,
+          0.7898253056626787,
+          0.6722141596880394,
+          1.1233239125500956,
+          0.8434049899343127,
+          1.0451948970399716
+        ],
+        "blocks": 8
+      },
+      "total_ms": {
+        "median_speedup": 0.9544721231522321,
+        "bootstrap_95_interval": [
+          0.869950640952818,
+          1.0259320119264812
+        ],
+        "paired_speedups": [
+          0.9789330928055783,
+          1.0213632684659606,
+          0.9300111534988859,
+          0.9089218308075917,
+          0.869950640952818,
+          1.1348506626399568,
+          0.5883433253727768,
+          1.0259320119264812
+        ],
+        "blocks": 8
+      }
+    }
+  ],
+  "exploratory_target_met": false,
+  "limitations": [
+    "Synthetic fixed tokens, no sampling or text tokenization in timings",
+    "One shared laptop, no controlled clock/thermal state or second machine",
+    "Bootstrap resamples blocks; correlated host noise may invalidate nominal coverage",
+    "Only this model, quantization and CPU; no general speed superiority established"
+  ]
+}

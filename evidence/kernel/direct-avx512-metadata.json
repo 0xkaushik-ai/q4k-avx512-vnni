@@ -1,0 +1,16 @@
+{
+  "recorded_at_utc": "2026-10-03T22:22:31.371706+00:00",
+  "upstream_commit": "836d57176dc699a726c55418e4f96b8ca628e1bf",
+  "command": "taskset -c 2 build/engine/bin/engine-kernel-test --benchmark",
+  "cpu_affinity": [
+    2
+  ],
+  "scope": "Isolated warm-cache single-thread Q4_K GEMV. Eight AB/BA alternating pairs per shape, arms calibrated >=100ms before measurements. Whole-model and other hardware results are separate. All candidate implementation is embedded in patch; standalone scratch source removed.",
+  "sha256": {
+    "engine/patches/q4k-vnni.patch": "11c708621a73e98a1eafa5962b1428795ce3adfb7de6c97c887e3e3d03fe4c86",
+    "engine/kernel_test.cpp": "dec7af0501c6f7faf89f788ccd8db5bca2d84bbbd721c140168d4ecc56fde2cf",
+    "build/engine/bin/engine-kernel-test": "bd0ad6fb8d176f138f00e2bd6e4a60479626c5928664b6cea1adab24be3c0ed2",
+    "build/engine/bin/engine-bench": "84744cae81d484dd8f903218dc3a8cd3c1e8af9e087377dae5b66ef6a18bc4a0",
+    "reports/engine-kernel/direct-avx512-vnni.jsonl": "5a4566e3c1bba10b57344cd6a8011afba081dad354a1005f131a27aeaf11942c"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "all": [
+    {
+      "threads": 1,
+      "flash": "on",
+      "total_ms": 3686.165022,
+      "decode_ms": 2618.634866
+    },
+    {
+      "threads": 1,
+      "flash": "off",
+      "total_ms": 4217.298271,
+      "decode_ms": 2943.76227
+    },
+    {
+      "threads": 2,
+      "flash": "on",
+      "total_ms": 2121.076305,
+      "decode_ms": 1547.933372
+    },
+    {
+      "threads": 2,
+      "flash": "off",
+      "total_ms": 2252.263097,
+      "decode_ms": 1569.154776
+    },
+    {
+      "threads": 4,
+      "flash": "on",
+      "total_ms": 1414.625732,
+      "decode_ms": 1032.9191
+    },
+    {
+      "threads": 4,
+      "flash": "off",
+      "total_ms": 1510.1164709999998,
+      "decode_ms": 1067.495561
+    },
+    {
+      "threads": 8,
+      "flash": "on",
+      "total_ms": 1202.5196,
+      "decode_ms": 907.882077
+    },
+    {
+      "threads": 8,
+      "flash": "off",
+      "total_ms": 1407.481803,
+      "decode_ms": 1049.238764
+    }
+  ],
+  "chosen": {
+    "threads": 8,
+    "flash": "on",
+    "total_ms": 1202.5196,
+    "decode_ms": 907.882077
+  }
+}

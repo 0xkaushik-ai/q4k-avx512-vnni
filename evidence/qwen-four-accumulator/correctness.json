@@ -1,0 +1,41 @@
+[
+  {
+    "prompt_tokens": 128,
+    "seed": 42,
+    "passed": true,
+    "bitwise_equal": true,
+    "values": 2582912,
+    "max_absolute_error": 0.0,
+    "rms_error": 0.0,
+    "outside_tolerance": 0,
+    "greedy_mismatches": 0,
+    "atol": 1e-05,
+    "rtol": 1e-05
+  },
+  {
+    "prompt_tokens": 512,
+    "seed": 73,
+    "passed": true,
+    "bitwise_equal": true,
+    "values": 2582912,
+    "max_absolute_error": 0.0,
+    "rms_error": 0.0,
+    "outside_tolerance": 0,
+    "greedy_mismatches": 0,
+    "atol": 1e-05,
+    "rtol": 1e-05
+  },
+  {
+    "prompt_tokens": 1024,
+    "seed": 123,
+    "passed": true,
+    "bitwise_equal": true,
+    "values": 2582912,
+    "max_absolute_error": 0.0,
+    "rms_error": 0.0,
+    "outside_tolerance": 0,
+    "greedy_mismatches": 0,
+    "atol": 1e-05,
+    "rtol": 1e-05
+  }
+]

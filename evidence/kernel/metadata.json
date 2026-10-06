@@ -1,0 +1,17 @@
+{
+  "recorded_at_utc": "2026-10-03T22:06:35.355076+00:00",
+  "upstream_commit": "836d57176dc699a726c55418e4f96b8ca628e1bf",
+  "command": "taskset -c 2 build/engine/bin/engine-kernel-test --benchmark",
+  "cpu_affinity": [
+    2
+  ],
+  "scope": "Isolated warm-cache single-thread Q4_K GEMV; not whole-model performance. Eight AB/BA alternating pairs per shape, arms calibrated >=100ms before measurements. Initial executable was rebuilt and was not hashed before replacement; initial patch and raw results retained.",
+  "sha256": {
+    "engine/patches/q4k-vnni.patch": "22b424770348616029c7a96811f4e6d04b942cf9988de959ec26b02455e3c779",
+    "engine/kernel_test.cpp": "833dc69ab4e6f951178052b6df916f8705c61690139493647f0165598c97e126",
+    "build/engine/bin/engine-kernel-test": "d3cfe55430bd2d8038af60d5092c4f733ca9d7224aa9b322df5421ab691c05a4",
+    "reports/engine-kernel/initial-vnni.patch": "470b935aa42be7e4ad676fea6254295f43b26adc9960dc440fa17b9b535cc7ba",
+    "reports/engine-kernel/initial-vnni.jsonl": "09ddad4bf47ed4a1424b572a5dfe94599172c651f1f1ef168d0b7c6913eb3916",
+    "reports/engine-kernel/fouracc-vnni.jsonl": "bfd42fcf6f7fc8bbe578ab619c244163ec620d06f9d235f068c65c92a8e1d2e5"
+  }
+}

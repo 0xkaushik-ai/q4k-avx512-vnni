@@ -1,0 +1,40 @@
+{
+  "command": "objdump -d -C build/engine/llama/ggml/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/arch/x86/repack.cpp.o",
+  "note": "Static instruction entries; neither executed instruction counts nor performance counters.",
+  "functions": {
+    "0000000000006720 <devicebench_gemv_q4_K_8x8_q8_K_baseline(int, float*, unsigned long, void const*, void const*, int, int) [clone .isra.0]>:": {
+      "selected": {
+        "vpdpbusd": 0,
+        "vpmaddubsw": 16,
+        "vpaddw": 14,
+        "vpaddd": 3,
+        "vpmaddwd": 3,
+        "vpmulld": 0,
+        "vpblendd": 16,
+        "vpshufd": 35,
+        "vpshufb": 3,
+        "vpbroadcastq": 0,
+        "vpmovqd": 0
+      },
+      "vector_stack_accesses": 7,
+      "instruction_entries": 338
+    },
+    "0000000000007e70 <devicebench_q4k_avx512_gemv>:": {
+      "selected": {
+        "vpdpbusd": 8,
+        "vpmaddubsw": 0,
+        "vpaddw": 0,
+        "vpaddd": 7,
+        "vpmaddwd": 0,
+        "vpmulld": 4,
+        "vpblendd": 0,
+        "vpshufd": 0,
+        "vpshufb": 0,
+        "vpbroadcastq": 8,
+        "vpmovqd": 1
+      },
+      "vector_stack_accesses": 0,
+      "instruction_entries": 218
+    }
+  }
+}

@@ -1,0 +1,1 @@
+A computer program is written to calculate the number of ways to choose 2000 elements from a set of 2000
