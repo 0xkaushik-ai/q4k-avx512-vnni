@@ -3,7 +3,7 @@
     "created_at": "20261003T222917.654841Z",
     "binary_sha256": "84744cae81d484dd8f903218dc3a8cd3c1e8af9e087377dae5b66ef6a18bc4a0",
     "model_sha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a",
-    "model": "/home/shiiit/experiment/.cache/qwen3-0.6b-q4_k_m.gguf",
+    "model": ".cache/qwen3-0.6b-q4_k_m.gguf",
     "source_lock": {
       "repository": "https://github.com/ggml-org/llama.cpp",
       "revision": "836d57176dc699a726c55418e4f96b8ca628e1bf",

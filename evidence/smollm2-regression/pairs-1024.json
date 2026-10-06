@@ -17,7 +17,7 @@
         "system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | "
       },
       "settings": {
-        "model": "/home/shiiit/experiment/.cache/runanywhere/smollm2-135m-q4_k_m.gguf",
+        "model": ".cache/runanywhere/smollm2-135m-q4_k_m.gguf",
         "threads": 4,
         "threads_batch": 4,
         "prompt_tokens": 1024,
@@ -1171,9 +1171,9 @@
           "taskset",
           "--cpu-list",
           "0,1,2,3",
-          "/home/shiiit/experiment/build/engine/bin/engine-bench",
+          "build/engine/bin/engine-bench",
           "--model",
-          "/home/shiiit/experiment/.cache/runanywhere/smollm2-135m-q4_k_m.gguf",
+          ".cache/runanywhere/smollm2-135m-q4_k_m.gguf",
           "--threads",
           "4",
           "--prompt-tokens",
@@ -1307,7 +1307,7 @@
         "system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | "
       },
       "settings": {
-        "model": "/home/shiiit/experiment/.cache/runanywhere/smollm2-135m-q4_k_m.gguf",
+        "model": ".cache/runanywhere/smollm2-135m-q4_k_m.gguf",
         "threads": 4,
         "threads_batch": 4,
         "prompt_tokens": 1024,
@@ -2461,9 +2461,9 @@
           "taskset",
           "--cpu-list",
           "0,1,2,3",
-          "/home/shiiit/experiment/build/engine/bin/engine-bench",
+          "build/engine/bin/engine-bench",
           "--model",
-          "/home/shiiit/experiment/.cache/runanywhere/smollm2-135m-q4_k_m.gguf",
+          ".cache/runanywhere/smollm2-135m-q4_k_m.gguf",
           "--threads",
           "4",
           "--prompt-tokens",
@@ -2604,7 +2604,7 @@
         "system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | "
       },
       "settings": {
-        "model": "/home/shiiit/experiment/.cache/runanywhere/smollm2-135m-q4_k_m.gguf",
+        "model": ".cache/runanywhere/smollm2-135m-q4_k_m.gguf",
         "threads": 4,
         "threads_batch": 4,
         "prompt_tokens": 1024,
@@ -3758,9 +3758,9 @@
           "taskset",
           "--cpu-list",
           "0,1,2,3",
-          "/home/shiiit/experiment/build/engine/bin/engine-bench",
+          "build/engine/bin/engine-bench",
           "--model",
-          "/home/shiiit/experiment/.cache/runanywhere/smollm2-135m-q4_k_m.gguf",
+          ".cache/runanywhere/smollm2-135m-q4_k_m.gguf",
           "--threads",
           "4",
           "--prompt-tokens",
@@ -3894,7 +3894,7 @@
         "system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | "
       },
       "settings": {
-        "model": "/home/shiiit/experiment/.cache/runanywhere/smollm2-135m-q4_k_m.gguf",
+        "model": ".cache/runanywhere/smollm2-135m-q4_k_m.gguf",
         "threads": 4,
         "threads_batch": 4,
         "prompt_tokens": 1024,
@@ -5048,9 +5048,9 @@
           "taskset",
           "--cpu-list",
           "0,1,2,3",
-          "/home/shiiit/experiment/build/engine/bin/engine-bench",
+          "build/engine/bin/engine-bench",
           "--model",
-          "/home/shiiit/experiment/.cache/runanywhere/smollm2-135m-q4_k_m.gguf",
+          ".cache/runanywhere/smollm2-135m-q4_k_m.gguf",
           "--threads",
           "4",
           "--prompt-tokens",
